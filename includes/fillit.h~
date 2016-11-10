@@ -1,0 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fillit.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcapling <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/10/12 17:15:10 by jcapling          #+#    #+#             */
+/*   Updated: 2016/10/18 11:51:51 by jcapling         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef FILLIT_H
+# define FILLIT_H
+
+# include <unistd.h>
+# include <stdlib.h>
+# include "./libft/libft.h"
+# include <fcntl.h>
+
+typedef struct		s_piece
+{
+	char			c;
+	char			*str;
+	int				x[4];
+	int				y[4];
+	struct s_piece	*next;
+}					t_piece;
+
+char				*ft_read(char *file);
+void				ft_error(void);
+int					ft_basic_checker(char *reading);
+void				ft_extended_checker(char *str);
+t_piece				*ft_update_cord_xy(t_piece block, int x, int y);
+t_piece				*ft_origin_xy(t_piece *block);
+char				**ft_fill_blank(char **str, int max_num);
+int					ft_max(t_piece *block);
+char				**ft_result(t_piece *block, int max);
+
+#endif
